@@ -1,5 +1,14 @@
-//import _ from 'lodash';
 import dec from 'decimal.js';
+// import _ from 'lodash';
+
+function isNum(num) {
+  if (num === 'Infinity') return true;
+  if (num === '-Infinity') return true;
+  if (num.includes('e')) return true;
+  if (num === '') return true;
+  if (num.includes(' ')) return true;
+  return isNaN(num);
+}
 
 function gg() {
   const input1 = document.createElement('input');
@@ -32,7 +41,7 @@ function gg() {
   divError2.className = 'error-message';
   divError2.innerHTML = '';
 
-  button.addEventListener('click', (event) => {
+  button.addEventListener('click', () => {
     const num1 = document.querySelector('#num1');
     const num2 = document.querySelector('#num2');
 
@@ -57,22 +66,13 @@ function gg() {
       document.querySelector('#result').innerHTML = String(dec.Decimal.add(num1.value, num2.value));
     }
   });
-
-  function isNum(num) {
-    if (num === 'Infinity') return true;
-    if (num === '-Infinity') return true;
-    if (num.includes('e')) return true;
-    if (num === '') return true;
-    if (num.includes(' ')) return true;
-    return isNaN(num);
-  }
 }
 
-window.addEventListener('DOMContentLoaded', function (event) {
-  document.body.appendChild(component());
+window.addEventListener('DOMContentLoaded', function () {
+  // document.body.appendChild(component());
   gg();
 });
-//
+
 // function component() {
 //   const element = document.createElement('div');
 //
